@@ -47,6 +47,16 @@ app.get("/", (req, res) => {
     res.send("FleetDash Backend Running");
 });
 
+// Health Check Endpoint (Render / Deployment monitoring)
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "ok",
+        message: "FleetDash Backend Running",
+        service: "FleetDash API",
+        timestamp: new Date().toISOString()
+    });
+});
+
 
 const server = http.createServer(app);
 
